@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="chapters" level="INFO" />
+
+
+	<!-- notice that the logger name you wish to configure in your program has 
+		the same name as the one mentioned in <logger> element In the Foo class, 
+		the logger name is "chapters.configuration.Foo" so the logger element "chapters.configuration.foo" 
+		has no effect but the logger element "chapters.configuration.Foo" has... -->
+	<logger name="chapters.configuration.foo" level="DEBUG" /> <!-- no effect on Foo class's logger! -->
+	<logger name="chapters.configuration.Foo" level="INFO" />
+
+	<!-- Strictly speaking, the level attribute is not necessary since -->
+	<!-- the level of the root level is set to DEBUG by default. -->
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
